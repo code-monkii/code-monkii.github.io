@@ -5,6 +5,12 @@
         "smogon": "mimikyu"
     },
 
+    "basculegion": {
+        "api": "basculegion-male",
+        "sprite": "basculegion",
+        "smogon": "basculegion"
+    },
+
     "aegislash": {
         "api": "aegislash-shield",
         "smogon": "aegislash",
