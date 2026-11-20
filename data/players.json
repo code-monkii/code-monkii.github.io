@@ -205,28 +205,73 @@
             ]
         },
         {
+        {
             "id": "2quickgrim",
             "name": "marquis",
             "sprite": "veteran-gen6.png",
-            "team": []
+            "team": [
+                "clefable",
+                "pelipper",
+                "rotom-mow",
+                "excadrill",
+                "golisopod",
+                "hatterene",
+                "dragapult",
+                "basculegion",
+                "quaquaval",
+                "archaludon"
+            ]
         },
         {
             "id": "rivalandrew",
             "name": "andrew",
             "sprite": "giovanni-masters.png",
-            "team": []
+            "team": [
+                "feraligatr",
+                "tyranitar",
+                "heracross",
+                "skarmory",
+                "manectric",
+                "aggron",
+                "chandelure",
+                "dragalge",
+                "tsareena",
+                "golisopod"
+            ]
         },
         {
             "id": "osirisgrimm",
             "name": "bryce",
             "sprite": "blue-masters2.png",
-            "team": []
+            "team": [
+                "swampert",
+                "metagross",
+                "garchomp",
+                "aegislash",
+                "golisopod",
+                "corviknight",
+                "dragapult",
+                "ceruledge",
+                "glimmora",
+                "kingambit"
+            ]
         },
         {
             "id": "letertel8",
             "name": "brandon",
             "sprite": "pokemaniac-gen6.png",
-            "team": []
+            "team": [
+                "jolteon",
+                "aerodactyl",
+                "dragonite",
+                "blaziken",
+                "chandelure",
+                "golisopod",
+                "inteleon",
+                "meowscarada",
+                "glimmora",
+                "kingambit"
+            ]
         }
     ]
 }
