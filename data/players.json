@@ -1,0 +1,232 @@
+{
+    "players": [
+        {
+            "id": "yangsta",
+            "name": "enze",
+            "sprite": "waiter-gen4.png",
+            "team": [
+                "venusaur",
+                "charizard",
+                "aerodactyl",
+                "salamence",
+                "swampert",
+                "garchomp",
+                "grimmsnarl",
+                "incineroar",
+                "toxapex",
+                "archaludon"
+            ]
+        },
+        {
+            "id": "code_monkii",
+            "name": "terryn",
+            "sprite": "iono-masters2.png",
+            "team": [
+                "dragonite",
+                "absol",
+                "staraptor",
+                "garchomp",
+                "rotom-wash",
+                "volcarona",
+                "aegislash",
+                "primarina",
+                "corviknight",
+                "pawmot"
+            ]
+        },
+        {
+            "id": "yetiwithanaxe",
+            "name": "spiff",
+            "sprite": "birch.png",
+            "team": [
+                "pelipper",
+                "barbaracle",
+                "araquanid",
+                "golisopod",
+                "rillaboom",
+                "meowscarada",
+                "ceruledge",
+                "espathra",
+                "kingambit",
+                "archaludon"
+            ]
+        },
+        {
+            "id": "darkmoju",
+            "name": "nathan",
+            "sprite": "ghetsis-gen5bw.png",
+            "team": [
+                "garchomp",
+                "rotom-wash",
+                "samurott-hisui",
+                "volcarona",
+                "primarina",
+                "araquanid",
+                "rillaboom",
+                "corviknight",
+                "dragapult",
+                "scovillain"
+            ]
+        },
+        {
+            "id": "handofd00m",
+            "name": "zach",
+            "sprite": "pokefan-gen4.png",
+            "team": [
+                "slowking-galar",
+                "lopunny",
+                "garchomp",
+                "rotom-wash",
+                "samurott-hisui",
+                "excadrill",
+                "rillaboom",
+                "hatterene",
+                "dragapult",
+                "ceruledge"
+            ]
+        },
+        {
+            "id": "sonad",
+            "name": "aj",
+            "sprite": "zinnia.png",
+            "team": [
+                "ditto",
+                "skarmory",
+                "gallade",
+                "samurott-hisui",
+                "rillaboom",
+                "hatterene",
+                "meowscarada",
+                "pawmot",
+                "ceruledge",
+                "glimmora"
+            ]
+        },
+        {
+            "id": "crugtheslug",
+            "name": "crug",
+            "sprite": "benga.png",
+            "team": [
+                "raichu",
+                "clefable",
+                "slowking-galar",
+                "salamence",
+                "rotom-wash",
+                "araquanid",
+                "golisopod",
+                "corviknight",
+                "quaquaval",
+                "glimmora"
+            ]
+        },
+        {
+            "id": "mikebonobo",
+            "name": "kyle",
+            "sprite": "swimmer-gen4dp.png",
+            "team": [
+                "charizard",
+                "garchomp",
+                "slowking-galar",
+                "primarina",
+                "golisopod",
+                "cinderace",
+                "corviknight",
+                "meowscarada",
+                "annihilape",
+                "glimmora"
+            ]
+        },
+        {
+            "id": "dafurryb1",
+            "name": "furry",
+            "sprite": "fisherman-gen3rs.png",
+            "team": [
+                "clefable",
+                "absol",
+                "garchomp",
+                "rotom-wash",
+                "volcarona",
+                "primarina",
+                "toxapex",
+                "rillaboom",
+                "ceruledge",
+                "kingambit"
+            ]
+        },
+        {
+            "id": "airenegames",
+            "name": "abigail",
+            "sprite": "valerie.png",
+            "team": [
+                "venusaur",
+                "raichu-alola",
+                "ditto",
+                "dragonite",
+                "garchomp",
+                "decidueye-hisui",
+                "primarina",
+                "golisopod",
+                "meowscarada",
+                "ceruledge" 
+            ]
+        },
+        {
+            "id": "agentnico42",
+            "name": "nico",
+            "sprite": "miku-fairy.png",
+            "team": [
+                "clefable",
+                "dragonite",
+                "tyranitar",
+                "absol",
+                "metagross",
+                "garchomp",
+                "excadrill",
+                "primarina",
+                "glimmora",
+                "archaludon"
+            ]
+        },
+        {
+            "id": "evoarrow27",
+            "name": "wyatt",
+            "sprite": "hilbert.png",
+            "team": [
+                "charizard",
+                "scizor",
+                "milotic",
+                "garchomp",
+                "volcarona",
+                "toxapex",
+                "golisopod",
+                "mimikyu",
+                "kingambit",
+                "archaludon"
+            ]
+        },
+        {
+            "id": "2quickgrim",
+            "name": "marquis",
+            "sprite": "veteran-gen6.png",
+            "team": []
+        },
+        {
+            "id": "rivalandrew",
+            "name": "andrew",
+            "sprite": "giovanni-masters.png",
+            "team": []
+        },
+        {
+            "id": "osirisgrimm",
+            "name": "bryce",
+            "sprite": "blue-masters2.png",
+            "team": []
+        },
+        {
+            "id": "letertel8",
+            "name": "brandon",
+            "sprite": "pokemaniac-gen6.png",
+            "team": []
+        }
+    ]
+}

@@ -1,0 +1,191 @@
+/* =================================
+   PLAYER DEFENSIVE TYPE CHART
+================================= */
+
+/* Player roster heading */
+
+.player-team .section-heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* Chart toggle button */
+
+.chart-toggle-button {
+    flex-shrink: 0;
+    padding: 9px 14px;
+    background: var(--color-lavender);
+    border: 3px solid var(--color-border);
+    box-shadow: 4px 4px 0 var(--color-border);
+    color: var(--color-border);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.chart-toggle-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--color-border);
+}
+
+/* Chart container */
+
+#defensive-chart-container {
+    margin: 20px 0 30px;
+    padding: 12px;
+    background: var(--color-surface-pink);
+    border: 3px solid var(--color-border);
+    box-shadow: 5px 5px 0 var(--color-lavender);
+}
+
+#defensive-chart-container[hidden] {
+    display: none;
+}
+
+/* Scrollable chart */
+
+.type-chart-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.type-chart-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: separate;
+    border-spacing: 3px;
+    table-layout: fixed;
+}
+
+/* Table cells */
+
+.type-chart-table th,
+.type-chart-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.type-chart-table thead th {
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    padding: 2px;
+}
+
+.type-chart-table thead th:first-child {
+    width: 105px;
+    background: var(--color-lavender);
+    font-size: 10px;
+}
+
+/* Pokémon sprites */
+
+.type-chart-sprite {
+    display: block;
+    width: 64px;
+    height: 64px;
+    max-width: 100%;
+    object-fit: contain;
+    image-rendering: auto;
+    margin: 6px auto;
+}
+
+/* Attacking type labels */
+
+.type-chart-table tbody th {
+    border: 2px solid var(--color-border);
+    font-size: 10px;
+    padding: 3px 6px;
+    min-width: 105px;
+}
+
+/* Effectiveness cells */
+
+.type-chart-table tbody td {
+    background: #19171f;
+    border: 1px solid var(--color-lavender);
+}
+
+.type-chart-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 36px;
+
+    padding: 5px 6px;
+
+    border: none;
+    border-radius: 0;
+
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.effectiveness-weak {
+    background: var(--effectiveness-weak);
+}
+
+.effectiveness-resist {
+    background: var(--effectiveness-resist);
+}
+
+.effectiveness-immune {
+    background: var(--effectiveness-immune);
+}
+/*
+.effectiveness-neutral {
+    background: var(--effectiveness-neutral);
+    color: var(--color-text);
+}
+
+*/
+/* =========================
+   CHART MEGA EVOLUTION TOGGLE
+========================= */
+
+/* Gives the button a positioning reference */
+.type-chart-pokemon-heading {
+    position: relative;
+}
+
+.type-chart-mega-toggle {
+    position: absolute;
+    top:0px;
+    right: 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+    z-index: 2;
+}
+
+.type-chart-mega-toggle img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.type-chart-mega-toggle:hover {
+    background: transparent;
+}
+
+.type-chart-mega-toggle:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}

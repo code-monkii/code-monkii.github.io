@@ -1,0 +1,73 @@
+
+/* =========================
+   GLOBAL THEME COLORS
+   Change these values to retheme the entire site.
+========================= */
+
+:root {
+    --color-bg: #17151c;
+    --color-surface: #211d27;
+    --color-surface-pink: #2f222c;
+    --color-surface-lavender: #282230;
+
+    --color-text: #eee7f2;
+    --color-text-muted: #b9afc0;
+    --color-border: #eee7f2;
+    --color-border-rgb: 238, 231, 242;
+
+    --color-pink: #a85d79;
+    --color-pink-light: #c47796;
+    --color-lavender: #66548f;
+    --color-mint: #4d765c;
+    --color-blue: #39758a;
+    --color-yellow: #8c7935;
+    --color-peach: #8f624e;
+
+    /* Pokémon type colours */
+    --type-electric: #8c7935;
+    --type-fire: #a85f4e;
+    --type-water: #39758a;
+    --type-grass: #4d765c;
+    --type-fairy: #a85d79;
+    --type-psychic: #66548f;
+    --type-flying: #625d91;
+    --type-normal: #625c50;
+    --type-fighting: #955b5b;
+    --type-poison: #765084;
+    --type-ground: #8c7042;
+    --type-rock: #766d49;
+    --type-bug: #6f7b3d;
+    --type-ghost: #625b87;
+    --type-steel: #5f6e7c;
+    --type-ice: #4f8588;
+    --type-dragon: #655b9b;
+    --type-dark: #675c58;
+
+    /* Defensive chart colours */
+    --effectiveness-weak: #a94468;
+    --effectiveness-resist: #4f8b62;
+    --effectiveness-immune: #3b86a3;
+    --effectiveness-neutral: #9a8338;
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
+
+    background: var(--color-surface);
+    color: var(--color-border);
+
+    min-height: 100vh;
+}

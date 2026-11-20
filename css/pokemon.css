@@ -1,0 +1,319 @@
+
+/* =========================
+   POKÉMON TEAM GRID
+========================= */
+
+#pokemon-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+
+/* =========================
+   POKÉMON CARDS
+========================= */
+
+.pokemon-slot {
+    position: relative;
+
+    min-height: 150px;
+
+    background: var(--color-surface-pink);
+    color: var(--color-text);
+
+    border: 3px solid var(--color-border);
+    box-shadow: 4px 4px 0 var(--color-lavender);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+.pokemon-filled:hover {
+    transform: translateY(-3px);
+    box-shadow: 5px 7px 0 var(--color-lavender);
+}
+
+.pokemon-slot-number {
+    font-size: 28px;
+    font-weight: bold;
+    opacity: 0.3;
+}
+
+.pokemon-slot-empty {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    opacity: 0.5;
+    margin-top: 8px;
+}
+
+.pokemon-slot-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   POKÉMON SPRITES
+========================= */
+
+.pokemon-sprite {
+    width: 96px;
+    height: 96px;
+
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+
+/* =========================
+   POKÉMON TYPES
+========================= */
+
+.pokemon-types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.pokemon-type,
+.type-badge {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border: 2px solid var(--color-border);
+
+    font-size: 11px;
+    font-weight: bold;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   TYPE COLOURS
+========================= */
+
+.type-electric { background: var(--type-electric); }
+.type-fire { background: var(--type-fire); }
+.type-water { background: var(--type-water); }
+.type-grass { background: var(--type-grass); }
+.type-fairy { background: var(--type-fairy); }
+.type-psychic { background: var(--type-psychic); }
+.type-flying { background: var(--type-flying); }
+.type-normal { background: var(--type-normal); }
+.type-fighting { background: var(--type-fighting); }
+.type-poison { background: var(--type-poison); }
+.type-ground { background: var(--type-ground); }
+.type-rock { background: var(--type-rock); }
+.type-bug { background: var(--type-bug); }
+.type-ghost { background: var(--type-ghost); }
+.type-steel { background: var(--type-steel); }
+.type-ice { background: var(--type-ice); }
+.type-dragon { background: var(--type-dragon); }
+.type-dark { background: var(--type-dark); }
+
+
+/* =========================
+   EXPANDED POKÉMON DETAILS
+========================= */
+
+.pokemon-details {
+    width: 100%;
+
+    margin-top: 12px;
+    padding-top: 12px;
+
+    border-top: 2px solid var(--color-lavender);
+}
+
+.pokemon-details[hidden] {
+    display: none;
+}
+
+.pokemon-slot.expanded {
+    grid-column: span 2;
+
+    background: var(--color-surface-lavender);
+
+    transform: none;
+
+    margin-bottom: 15px;
+}
+
+.pokemon-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.pokemon-stat {
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    padding: 8px;
+    text-align: center;
+}
+
+
+/* =========================
+   ABILITIES
+========================= */
+
+.pokemon-abilities {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-top: 12px;
+}
+
+.pokemon-ability-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pokemon-ability-button {
+    width: 100%;
+
+    padding: 8px 10px;
+
+    background: var(--color-surface);
+    border: 2px solid var(--color-lavender);
+
+    color: var(--color-text);
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+
+    text-align: left;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pokemon-ability-button:hover,
+.pokemon-ability-button.active {
+    background: var(--color-pink);
+    border-color: var(--color-border);
+}
+
+.pokemon-ability-description {
+    padding: 10px;
+
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-lavender);
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   MEGA EVOLUTION TOGGLE
+========================= */
+
+.pokemon-mega-toggle {
+    position: absolute;
+
+    top: 8px;
+    right: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    background: transparent;
+    border: none;
+
+    padding: 3px;
+
+    cursor: pointer;
+    z-index: 2;
+}
+
+.pokemon-mega-toggle img {
+    width: 48px;
+    height: 48px;
+
+    object-fit: contain;
+}
+
+.pokemon-mega-toggle img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+/* Alternate form icon */
+.pokemon-mega-toggle img[src*="form-icon"] {
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+}
+
+.pokemon-mega-toggle:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+/* =========================
+   SMOGON LINK
+========================= */
+
+.pokemon-smogon-link {
+    display: inline-block;
+
+    margin-top: 15px;
+    padding: 8px 12px;
+
+    background: var(--color-surface);
+    color: var(--color-text);
+
+    border: 2px solid var(--color-border);
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    transition:
+        background 0.15s,
+        transform 0.15s;
+}
+
+.pokemon-smogon-link:hover {
+    background: var(--color-pink);
+
+    transform: translateY(-2px);
+}

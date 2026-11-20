@@ -1,0 +1,24 @@
+{
+    "mimikyu": {
+        "api": "mimikyu-disguised",
+        "sprite": "mimikyu",
+        "smogon": "mimikyu"
+    },
+
+    "aegislash": {
+        "api": "aegislash-shield",
+        "smogon": "aegislash",
+        "forms": [
+            {
+                "id": "shield",
+                "api": "aegislash-shield",
+                "sprite": "aegislash-shield"
+            },
+            {
+                "id": "blade",
+                "api": "aegislash-blade",
+                "sprite": "aegislash-blade"
+            }
+        ]
+    }
+}

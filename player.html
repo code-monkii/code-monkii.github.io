@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Player — Season 13 Champions OU</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pokemon.css">
+    <link rel="stylesheet" href="css/type-chart.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="logo">
+            <span>POKÉMON</span>
+            <h1>Season 13</h1>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">Players</a>
+            <a href="#">Draft</a>
+            <a href="#">Matches</a>
+            <a href="#">Stats</a>
+            <a href="#">Compare</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="player-profile">
+
+            <a href="index.html" class="back-link">
+                ← BACK TO HOME
+            </a>
+
+            <div id="player-header">
+                <p class="loading">Loading trainer...</p>
+            </div>
+
+        </section>
+
+
+        <section class="player-team">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Drafted Pokémon</h2>
+                </div>
+
+                <button id="toggle-chart" class="chart-toggle-button" type="button">
+                    VIEW DEFENSIVE TYPE CHART
+                </button>
+            </div>
+
+            <div id="defensive-chart-container" hidden></div>
+
+            <div id="pokemon-container">
+                <p class="loading">Team information coming soon...</p>
+            </div>
+
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>Pokémon Season 13 • Champions OU</p>
+    </footer>
+
+    <script src="js/pokemon-api.js"></script>
+    <script src="js/type-chart.js"></script>
+    <script src="js/player.js"></script>
+
+</body>
+</html>

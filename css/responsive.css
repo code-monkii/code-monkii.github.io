@@ -1,0 +1,202 @@
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    /* Feature cards */
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Player cards */
+
+    .players-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Pokémon team */
+
+    .pokemon-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Season status */
+
+    .season-status {
+        grid-template-columns:
+            1fr auto 1fr;
+
+        row-gap: 10px;
+    }
+
+    .season-status .status-divider:nth-of-type(4) {
+        display: none;
+    }
+
+    .season-status .status-item:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .hero {
+        padding: 35px 20px;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    /* General layout */
+
+    main {
+        padding: 15px;
+    }
+
+    /* Header */
+
+    .site-header {
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 15px;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+    /* Hero */
+
+    .hero {
+        padding: 25px 15px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero-badge {
+        font-size: 10px;
+    }
+
+    /* Feature cards */
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    /* Player section */
+
+    .players-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-heading {
+        align-items: center;
+    }
+
+    .section-heading h2 {
+        font-size: 24px;
+    }
+
+    /* Season status */
+
+    .season-status {
+        grid-template-columns: 1fr 1fr;
+
+        padding: 10px;
+    }
+
+    .status-item {
+        padding: 12px 5px;
+    }
+
+    .status-value {
+        font-size: 19px;
+    }
+
+    .status-divider {
+        display: none;
+    }
+
+    /* Player profile */
+
+    .player-profile-card {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 15px;
+    }
+
+    .player-profile-sprite {
+        margin: 0 auto;
+    }
+
+    .player-team {
+        margin-top: 25px;
+    }
+
+    /* Pokémon cards */
+
+    .pokemon-container {
+        grid-template-columns: 1fr;
+    }
+
+    .pokemon-card {
+        padding: 15px;
+    }
+
+    .pokemon-sprite {
+        width: 80px;
+        height: 80px;
+    }
+
+    .pokemon-name {
+        font-size: 19px;
+    }
+
+    /* Type chart */
+
+    .type-chart {
+        padding: 12px;
+
+        overflow-x: auto;
+    }
+
+    .type-chart-table {
+        min-width: 500px;
+    }
+
+    .type-chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .type-chart-toggle {
+        flex-wrap: wrap;
+    }
+
+    /* Footer */
+
+    footer {
+        padding: 20px 15px;
+
+        text-align: center;
+    }
+
+}
