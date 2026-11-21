@@ -1,3 +1,33 @@
+function getStatColor(value) {
+    const stops = [
+        { value: 0, color: [255, 0, 0] },
+        { value: 60, color: [255, 50, 0] },
+        { value: 95, color: [255, 228, 0] },
+        { value: 130, color: [102, 255, 0] },
+        { value: 255, color: [102, 255, 0] }
+    ];
+
+    let lower = stops[0];
+    let upper = stops[stops.length - 1];
+
+    for (let i = 0; i < stops.length - 1; i++) {
+        if (value <= stops[i + 1].value) {
+            lower = stops[i];
+            upper = stops[i + 1];
+            break;
+        }
+    }
+
+    const progress = (value - lower.value) /
+        (upper.value - lower.value);
+
+    const rgb = lower.color.map((channel, i) =>
+        Math.round(channel + (upper.color[i] - channel) * progress)
+    );
+
+    return `rgb(${rgb.join(", ")})`;
+}
+
 function createPokemonSprite(pokemon, className, previousSprite = null) {
 
     const sprite = document.createElement("img");
@@ -128,6 +158,7 @@ async function loadTeam(player, container) {
             const emptySlot = document.createElement("div");
 
             emptySlot.className = "pokemon-slot";
+            emptySlot.dataset.originalIndex = i;
 
             emptySlot.innerHTML = `
                 <div class="pokemon-slot-number">
@@ -146,6 +177,7 @@ async function loadTeam(player, container) {
         const slot = document.createElement("div");
 
         slot.className = "pokemon-slot pokemon-loading";
+        slot.dataset.originalIndex = i;
         slot.textContent = "Loading...";
 
         container.appendChild(slot);
@@ -285,18 +317,36 @@ async function loadTeam(player, container) {
                 );
 
                 slot.addEventListener("click", () => {
-
                     const details = slot.querySelector(".pokemon-details");
-
-                    if (!details) {
-                        return;
-                    }
+                    if (!details) return;
 
                     const isOpen = !details.hidden;
 
-                    details.hidden = isOpen;
-                    slot.classList.toggle("expanded", !isOpen);
+                    if (isOpen) {
+                        // Collapse this Pokémon
+                        details.hidden = true;
+                        slot.classList.remove("expanded");
 
+                        restorePokemonSlotOrder(container);
+                    } else {
+                        // Find the previously expanded cards BEFORE expanding this one
+                        const expandedSlots = Array.from(
+                            container.querySelectorAll(".pokemon-slot.expanded")
+                        );
+
+                        const lastExpanded = expandedSlots[expandedSlots.length - 1];
+
+                        // Expand this Pokémon
+                        details.hidden = false;
+                        slot.classList.add("expanded");
+
+                        // Place it after the previously expanded card
+                        if (lastExpanded) {
+                            lastExpanded.after(slot);
+                        } else {
+                            container.prepend(slot);
+                        }
+                    }
                 });
 
             } catch (error) {
@@ -315,6 +365,28 @@ async function loadTeam(player, container) {
 
     const compactTeam = loadedPokemon.filter(Boolean);
     createDefensiveChart(compactTeam, megaControllers);
+}
+
+/* =========================
+   RESTORE POKÉMON ORDER
+========================= */
+function restorePokemonSlotOrder(container) {
+    const slots = Array.from(container.children);
+
+    const expandedSlots = slots.filter(slot =>
+        slot.classList.contains("expanded")
+    );
+
+    const collapsedSlots = slots
+        .filter(slot => !slot.classList.contains("expanded"))
+        .sort((a, b) =>
+            Number(a.dataset.originalIndex) -
+            Number(b.dataset.originalIndex)
+        );
+
+    [...expandedSlots, ...collapsedSlots].forEach(slot => {
+        container.appendChild(slot);
+    });
 }
 
 
@@ -415,12 +487,28 @@ function updatePokemonCard(slot, pokemon, megaButton) {
     statNames.forEach(([key, label]) => {
 
         const stat = document.createElement("div");
+        const value = Number(pokemon.stats[key]) || 0;
+        const barWidth = Math.min(100, Math.max(0, (value / 255) * 100));
+        const colorProgress = Math.min(1, Math.max(0, (value - 40) / 100));
+        const statColor = getStatColor(value);
 
         stat.className = "pokemon-stat";
 
         stat.innerHTML = `
-            <span>${label}</span>
-            <strong>${pokemon.stats[key]}</strong>
+            <div class="pokemon-stat-label">
+                <span>${label}</span>
+                <strong>${value}</strong>
+            </div>
+            <div
+                class="pokemon-stat-bar"
+                role="progressbar"
+                aria-label="${label}: ${value}"
+                aria-valuemin="0"
+                aria-valuemax="255"
+                aria-valuenow="${value}"
+            >
+                <span style="width: ${barWidth}%; background-color: ${statColor}"></span>
+            </div>
         `;
 
         stats.appendChild(stat);
@@ -462,17 +550,17 @@ function updatePokemonCard(slot, pokemon, megaButton) {
         abilityDescription.className = "pokemon-ability-description";
         abilityDescription.hidden = true;
 
-        const shortEffect = document.createElement("p");
+        //const shortEffect = document.createElement("p");
 
-        shortEffect.className = "ability-short-effect";
-        shortEffect.textContent = ability.shortEffect;
+        //shortEffect.className = "ability-short-effect";
+        //shortEffect.textContent = ability.shortEffect;
 
         const fullEffect = document.createElement("p");
 
         fullEffect.className = "ability-full-effect";
         fullEffect.textContent = ability.effect;
 
-        abilityDescription.appendChild(shortEffect);
+        //abilityDescription.appendChild(shortEffect);
         abilityDescription.appendChild(fullEffect);
 
         // Toggle ability explanation
@@ -521,12 +609,23 @@ function updatePokemonCard(slot, pokemon, megaButton) {
         /*
      * Assemble Pokémon card.
      *
-     * The Mega button is already inside the card and is intentionally
-     * not recreated here.
+     * The sprite, name, and types stay together in a summary column.
+     * The Mega/Form button is also anchored to this column instead of
+     * the entire expanded card.
      */
-    slot.appendChild(sprite);
-    slot.appendChild(name);
-    slot.appendChild(types);
+
+    const summary = document.createElement("div");
+    summary.className = "pokemon-card-summary";
+
+    summary.appendChild(sprite);
+    summary.appendChild(name);
+    summary.appendChild(types);
+
+    if (megaButton) {
+        summary.appendChild(megaButton);
+    }
+
+    slot.appendChild(summary);
     slot.appendChild(details);
     details.appendChild(smogonLink);
 }

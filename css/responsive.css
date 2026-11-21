@@ -197,8 +197,32 @@
     }
 
     .pokemon-slot.expanded {
-        grid-column: 1 / -1;
-        margin-bottom: 10px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        row-gap: 10px;
+        justify-items: center;
+    }
+
+    .pokemon-slot.expanded .pokemon-card-summary {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .pokemon-slot.expanded .pokemon-sprite {
+        width: 96px;
+        height: 96px;
+    }
+
+    .pokemon-slot.expanded .pokemon-details {
+        grid-column: 1;
+        grid-row: 2;
+
+        width: 100%;
+        margin-top: 4px;
+        padding: 12px 0 0;
+
+        border-left: 0;
+        border-top: 2px solid var(--color-lavender);
     }
 
     .pokemon-sprite {
@@ -261,4 +285,39 @@
         text-align: center;
     }
 
+}
+
+
+
+
+@media (max-width: 600px) {
+    .schedule-card-content {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .schedule-matchup {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 900px) {
+    #schedule-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    #schedule-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .schedule-card-header {
+        padding: 12px;
+    }
+
+    .schedule-card-content {
+        grid-template-columns: 1fr;
+    }
 }

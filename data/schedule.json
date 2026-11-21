@@ -1,0 +1,193 @@
+
+{
+    "weeks": [
+        {
+            "week": 3,
+            "dates": "Nov 22 - Nov 28",
+            "matches": [
+                ["evoarrow27", "yetiwithanaxe"],
+                ["2quickgrim", "letertel8"],
+                ["mikebonobo", "sonad"],
+                ["handofd00m", "dafurryb1"],
+                ["yangsta", "agentnico42"],
+                ["crugtheslug", "rivalandrew"],
+                ["code_monkii", "airenegames"],
+                ["darkmoju", "osirisgrimm"]
+            ]
+        },
+        {
+            "week": 4,
+            "dates": "Nov 29 - Dec 05",
+            "matches": [
+                ["evoarrow27", "osirisgrimm"],
+                ["airenegames", "darkmoju"],
+                ["rivalandrew", "code_monkii"],
+                ["agentnico42", "crugtheslug"],
+                ["dafurryb1", "yangsta"],
+                ["sonad", "handofd00m"],
+                ["letertel8", "mikebonobo"],
+                ["yetiwithanaxe", "2quickgrim"]
+            ]
+        },
+        {
+            "week": 5,
+            "dates": "Dec 06 - Dec 12",
+            "matches": [
+                ["evoarrow27", "rivalandrew"],
+                ["agentnico42", "airenegames"],
+                ["dafurryb1", "osirisgrimm"],
+                ["sonad", "darkmoju"],
+                ["letertel8", "code_monkii"],
+                ["yetiwithanaxe", "crugtheslug"],
+                ["2quickgrim", "yangsta"],
+                ["mikebonobo", "handofd00m"]
+            ]
+        },
+        {
+            "week": 6,
+            "dates": "Dec 13 - Dec 19",
+            "matches": [
+                ["evoarrow27", "handofd00m"],
+                ["yangsta", "mikebonobo"],
+                ["crugtheslug", "2quickgrim"],
+                ["code_monkii", "yetiwithanaxe"],
+                ["darkmoju", "letertel8"],
+                ["osirisgrimm", "sonad"],
+                ["airenegames", "dafurryb1"],
+                ["rivalandrew", "agentnico42"]
+            ]
+        },
+        {
+            "week": 7,
+            "dates": "Dec 13 - Dec 19",
+            "matches": [
+                ["evoarrow27", "crugtheslug"],
+                ["code_monkii", "yangsta"],
+                ["darkmoju", "handofd00m"],
+                ["osirisgrimm", "mikebonobo"],
+                ["airenegames", "2quickgrim"],
+                ["rivalandrew", "yetiwithanaxe"],
+                ["agentnico42", "letertel8"],
+                ["dafurryb1", "sonad"]
+            ]
+        },
+        {
+            "week": 8,
+            "dates": "Jan 01 - Jan 09",
+            "matches": [
+                ["evoarrow27", "dafurryb1"],
+                ["sonad", "agentnico42"],
+                ["letertel8", "rivalandrew"],
+                ["yetiwithanaxe", "airenegames"],
+                ["2quickgrim", "osirisgrimm"],
+                ["mikebonobo", "darkmoju"],
+                ["handofd00m", "code_monkii"],
+                ["yangsta", "crugtheslug"]
+            ]
+        },
+        {
+            "week": 9,
+            "dates": "Jan 10 - Jan 16",
+            "matches": [
+                ["evoarrow27", "yangsta"],
+                ["crugtheslug", "handofd00m"],
+                ["code_monkii", "mikebonobo"],
+                ["darkmoju", "2quickgrim"],
+                ["osirisgrimm", "yetiwithanaxe"],
+                ["airenegames", "letertel8"],
+                ["rivalandrew", "sonad"],
+                ["agentnico42", "dafurryb1"]
+            ]
+        },
+        {
+            "week": 10,
+            "dates": "Jan 17 - Jan 23",
+            "matches": [
+                ["evoarrow27", "code_monkii"],
+                ["darkmoju", "crugtheslug"],
+                ["osirisgrimm", "yangsta"],
+                ["airenegames", "handofd00m"],
+                ["rivalandrew", "mikebonobo"],
+                ["agentnico42", "2quickgrim"],
+                ["dafurryb1", "yetiwithanaxe"],
+                ["sonad", "letertel8"]
+            ]
+        },
+        {
+            "week": 11,
+            "dates": "Jan 24 - Jan 30",
+            "matches": [
+                ["evoarrow27", "sonad"],
+                ["letertel8", "dafurryb1"],
+                ["yetiwithanaxe", "agentnico42"],
+                ["2quickgrim", "rivalandrew"],
+                ["mikebonobo", "airenegames"],
+                ["handofd00m", "osirisgrimm"],
+                ["yangsta", "darkmoju"],
+                ["crugtheslug", "code_monkii"]
+            ]
+        },
+        {
+            "week": 12,
+            "dates": "Jan 31 - Feb 06",
+            "matches": [
+                ["evoarrow27", "letertel8"],
+                ["yetiwithanaxe", "sonad"],
+                ["2quickgrim", "dafurryb1"],
+                ["mikebonobo", "agentnico42"],
+                ["handofd00m", "rivalandrew"],
+                ["yangsta", "airenegames"],
+                ["crugtheslug", "osirisgrimm"],
+                ["code_monkii", "darkmoju"]
+            ]
+        },
+        {
+            "week": 13,
+            "dates": "Feb 07 - Feb 13",
+            "matches": [
+                ["evoarrow27", "darkmoju"],
+                ["osirisgrimm", "code_monkii"],
+                ["airenegames", "crugtheslug"],
+                ["rivalandrew", "yangsta"],
+                ["agentnico42", "handofd00m"],
+                ["dafurryb1", "mikebonobo"],
+                ["sonad", "2quickgrim"],
+                ["letertel8", "yetiwithanaxe"]
+            ]
+        },
+        {
+            "week": 14,
+            "dates": "Feb 14 - Feb 20",
+            "matches": [
+                ["evoarrow27", "mikebonobo"],
+                ["handofd00m", "2quickgrim"],
+                ["yangsta", "yetiwithanaxe"],
+                ["crugtheslug", "letertel8"],
+                ["code_monkii", "sonad"],
+                ["darkmoju", "dafurryb1"],
+                ["osirisgrimm", "agentnico42"],
+                ["airenegames", "rivalandrew"]
+            ]
+        },
+        {
+            "week": 15,
+            "dates": "Feb 21 - Feb 27",
+            "matches": [
+                ["evoarrow27", "agentnico42"],
+                ["dafurryb1", "rivalandrew"],
+                ["sonad", "airenegames"],
+                ["letertel8", "osirisgrimm"],
+                ["yetiwithanaxe", "darkmoju"],
+                ["2quickgrim", "code_monkii"],
+                ["mikebonobo", "crugtheslug"],
+                ["handofd00m", "yangsta"]
+            ]
+        }
+    ],
+    "gracePeriod": {
+        "title": "Season 13 Grace Period",
+        "dates": "Dec 20 - Dec 31",
+        "description": "Redraft submissions MUST be in by the end of 2026! The new draft sheet will be published in the New Year.",
+        "redraftSwaps": 4
+    }
+}

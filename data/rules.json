@@ -1,7 +1,143 @@
 {
-    "bannedPokemon": [],
-    "bannedMoves": [],
-    "bannedAbilities": [],
-    "bannedItems": [],
-    "restrictedPokemon": []
+        "clauses": [
+        {
+            "title": "Sleep Move Clause",
+            "description": "Players cannot use the following moves: Hypnosis, Sing, Sleep Powder, Spore, Yawn"
+        },
+        {
+            "title": "Evasion Clause",
+            "description": "Players cannot use the abilities: Sand Veil, Snow Cloak, the item Bright Powder, or the moves Acupressure, Double Team, and Minimize."
+        },
+        {
+            "title": "OHKO Clause",
+            "description": "Players cannot use the following moves: Fissure, Guillotine, Horn Drill, or Sheer Cold."
+        },
+        {
+            "title": "Species Clause",
+            "description": "Players cannot use more than one of the same Pokémon species on their team."
+        },
+        {
+            "title": "Item Clause",
+            "description": "Players cannot use more than one of the same item on their team."
+        }
+    ],
+    "items": [
+        {
+            "id": "brightpowder",
+            "name": "Bright Powder"
+        },
+        {
+            "id": "quick-claw",
+            "name": "Quick Claw"
+        },
+        {
+            "id": "light-clay",
+            "name": "Light Clay"
+        },
+        {
+            "id": "kings-rock",
+            "name": "Kings Rock"
+        },
+        {
+            "id": "damp-rock",
+            "name": "Damp Rock"
+        }
+    ],
+    "abilities": [
+        {
+            "id": "sandveil",
+            "name": "Sand Veil"
+        },
+        {
+            "id": "snowcloak",
+            "name": "Snow Cloak"
+        },
+        {
+            "id": "moody",
+            "name": "Moody"
+        }
+    ],
+    "moves": [
+        {
+            "id": "hypnosis",
+            "name": "Hypnosis"
+        },
+        {
+            "id": "sing",
+            "name": "Sing"
+        },
+        {
+            "id": "sleeppowder",
+            "name": "Sleep Powder"
+        },
+        {
+            "id": "spore",
+            "name": "Spore"
+        },
+        {
+            "id": "yawn",
+            "name": "Yawn"
+        },
+        {
+            "id": "acupressure",
+            "name": "Acupressure"
+        },
+        {
+            "id": "doubleteam",
+            "name": "Double Team"
+        },
+        {
+            "id": "minimize",
+            "name": "Minimize"
+        },
+        {
+            "id": "fissure",
+            "name": "Fissure"
+        },
+        {
+            "id": "guillotine",
+            "name": "Guillotine"
+        },
+        {
+            "id": "horn-drill",
+            "name": "Horn Drill"
+        },
+        {
+            "id": "sheer-cold",
+            "name": "Sheer Cold"
+        },
+        {
+            "id": "shed-tail",
+            "name": "Shed Tail"
+        },
+        {
+            "id": "last-respects",
+            "name": "Last Respects"
+        },
+        {
+            "id": "baton-pass",
+            "name": "Baton Pass"
+        }
+    ],
+    "pokemon": [
+        "sneasler",
+        "finizen",
+        "palafin",
+        "baxcalibur",
+        "gholdengo"
+    ],
+
+    "mega-pokemon": [
+        "blastoise-mega",
+        "raichu-megay",
+        "gengar-mega",
+        "alakazam-mega",
+        "starmie-mega",
+        "blaziken-mega",
+        "salamence-mega",
+        "lucario-mega",
+        "lucario-megaz",
+        "baxcalibur-mega"
+    ]
+
 }

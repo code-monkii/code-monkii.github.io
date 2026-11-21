@@ -4,6 +4,8 @@
    Change these values to retheme the entire site.
 ========================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 :root {
     --color-bg: #17151c;
     --color-surface: #211d27;
@@ -48,6 +50,9 @@
     --effectiveness-resist: #4f8b62;
     --effectiveness-immune: #3b86a3;
     --effectiveness-neutral: #9a8338;
+
+    /* Font family for the entire site */
+    --font-pixel: "Press Start 2P", sans-serif;
 }
 
 /* =========================
@@ -70,4 +75,6 @@ body {
     color: var(--color-border);
 
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
