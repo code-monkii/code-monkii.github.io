@@ -1,4 +1,3 @@
-
 /* =========================
    LOAD RULES
 ========================= */
@@ -141,7 +140,17 @@ function renderList(entries, containerId) {
    BANNED POKÉMON / MEGAS
 ========================= */
 
-function renderPokemonList(pokemonIds, containerId) {
+function normalizePokemonApiId(id) {
+    return id
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/-megax$/, "-mega-x")
+        .replace(/-megay$/, "-mega-y")
+        .replace(/-megaz$/, "-mega-z");
+}
+
+async function renderPokemonList(pokemonIds, containerId) {
     const container =
         document.getElementById(containerId);
 
@@ -149,24 +158,43 @@ function renderPokemonList(pokemonIds, containerId) {
 
     container.innerHTML = "";
 
-    pokemonIds.forEach(pokemonId => {
-        const card = document.createElement("div");
-        card.className = "banlist-entry";
+    await Promise.all(
+        pokemonIds.map(async pokemonId => {
 
-        const sprite = document.createElement("img");
-        sprite.className = "banlist-sprite";
-        sprite.src =
-            `https://play.pokemonshowdown.com/sprites/gen5/${pokemonId}.png`;
-        sprite.alt = formatPokemonName(pokemonId);
+            const card = document.createElement("div");
+            card.className = "banlist-entry";
 
-        const name = document.createElement("span");
-        name.textContent = formatPokemonName(pokemonId);
+            const sprite = document.createElement("img");
+            sprite.className = "banlist-sprite";
+            sprite.alt = formatPokemonName(pokemonId);
+            sprite.src = "/assets/images/missingno.png";
 
-        card.appendChild(sprite);
-        card.appendChild(name);
+            const name = document.createElement("span");
+            name.textContent = formatPokemonName(pokemonId);
 
-        container.appendChild(card);
-    });
+            card.appendChild(sprite);
+            card.appendChild(name);
+            container.appendChild(card);
+
+            try {
+
+                const pokemon = await PokemonAPI.getPokemon(
+                    normalizePokemonApiId(pokemonId)
+                );
+
+                if (pokemon.sprite) {
+                    sprite.src = pokemon.sprite;
+                }
+
+            } catch (error) {
+
+                console.warn(
+                    `Could not load API sprite for ${pokemonId}:`,
+                    error
+                );
+            }
+        })
+    );
 }
 
 

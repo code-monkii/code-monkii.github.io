@@ -4,9 +4,6 @@ const PokemonAPI = (() => {
     const SPECIES_API_BASE = "https://pokeapi.co/api/v2/pokemon-species/";
     const ABILITY_API_BASE = "https://pokeapi.co/api/v2/ability/";
 
-    const SHOWDOWN_SPRITE_BASE =
-        "https://play.pokemonshowdown.com/sprites/gen5/";
-
     // Cache Pokémon, species, and ability requests separately
     const pokemonCache = new Map();
     const speciesCache = new Map();
@@ -301,7 +298,8 @@ const PokemonAPI = (() => {
                         name: formatName(data.name),
                         types: types,
                         stats: stats,
-                        abilities: abilities
+                        abilities: abilities,
+                        sprite: getApiSprite(data)
                     };
                 })
                 .catch(error => {
@@ -318,12 +316,8 @@ const PokemonAPI = (() => {
         // Wait for the cached Pokémon data
         const pokemonData = await pokemonCache.get(pokemonId);
 
-        // Generate the sprite URL separately
-        return {
-            ...pokemonData,
-            sprite:
-                `${SHOWDOWN_SPRITE_BASE}${spriteId.toLowerCase()}.png`
-        };
+        // Return the cached Pokémon data with its API sprite
+        return pokemonData;
     }
 
 
@@ -373,6 +367,7 @@ const PokemonAPI = (() => {
                 id: form.id,
                 name: formatName(`${identifier}-${form.id}`),
                 api: form.api,
+                apiUrl: `${API_BASE}${encodeURIComponent(form.api)}`,
                 spriteId: form.sprite || getSpriteId(form.api)
             }));
 
@@ -411,24 +406,98 @@ const PokemonAPI = (() => {
         );
     }
 
-    function preloadSprite(spriteId) {
+    async function preloadSprite(identifier) {
 
-        if (!spriteId) {
-            return Promise.resolve(false);
+        if (!identifier) {
+            return false;
         }
 
-        const url = `${SHOWDOWN_SPRITE_BASE}${spriteId.toLowerCase()}.png`;
+        let url = identifier;
 
-        if (typeof window === "undefined") {
-            return Promise.resolve(false);
+        try {
+
+            if (/^https?:\/\//i.test(identifier)) {
+
+                if (identifier.includes(API_BASE)) {
+
+                    const response = await fetch(identifier);
+
+                    if (!response.ok) {
+                        return false;
+                    }
+
+                    const data = await response.json();
+                    url = getApiSprite(data);
+
+                }
+
+            } else {
+
+                url = `${API_BASE}${encodeURIComponent(identifier.toLowerCase())}`;
+
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    return false;
+                }
+
+                const data = await response.json();
+                url = getApiSprite(data);
+            }
+
+            if (!url) {
+                return false;
+            }
+
+            if (typeof window === "undefined") {
+                return false;
+            }
+
+            return await new Promise(resolve => {
+                const image = new Image();
+                image.onload = () => resolve(true);
+                image.onerror = () => resolve(false);
+                image.src = url;
+            });
+
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function getApiSprite(data) {
+
+        const versions = data.sprites?.versions || {};
+
+        const preferredVersions = [
+            ["generation-v", "black-white"],
+            ["generation-vii", "ultra-sun-ultra-moon"],
+            ["generation-vii", "sun-moon"],
+            ["generation-viii", "brilliant-diamond-and-shining-pearl"],
+            ["generation-vi", "x-y"]
+        ];
+
+        for (const [generation, game] of preferredVersions) {
+            const sprite = versions[generation]?.[game]?.front_default;
+
+            if (sprite) {
+                return sprite;
+            }
         }
 
-        return new Promise(resolve => {
-            const image = new Image();
-            image.onload = () => resolve(true);
-            image.onerror = () => resolve(false);
-            image.src = url;
-        });
+        const generationNames = Object.keys(versions).reverse();
+
+        for (const generationName of generationNames) {
+            const games = Object.values(versions[generationName] || {});
+
+            for (const game of games) {
+                if (game?.front_default) {
+                    return game.front_default;
+                }
+            }
+        }
+
+        return data.sprites?.front_default || null;
     }
 
 
@@ -438,7 +507,8 @@ const PokemonAPI = (() => {
         getPokemonForm,
         getPokemonForms,
         getAbility,
-        preloadSprite
+        preloadSprite,
+        getApiSprite
     };
 
 })();

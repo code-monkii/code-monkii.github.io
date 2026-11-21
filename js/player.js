@@ -141,6 +141,7 @@ async function loadPlayer() {
 async function loadTeam(player, container) {
 
     const team = player.team || [];
+    const bannedMegaPokemonIds = await getBannedMegaPokemonIds();
     const loadedPokemon = [];
     const megaControllers = [];
 
@@ -205,7 +206,9 @@ async function loadTeam(player, container) {
 
                 // Find Mega Evolutions
                 const megaForms = pokemon.forms.filter(
-                    form => /-mega(?:-|$)/.test(form.id)
+                    form =>
+                        /-mega(?:-|$)/.test(form.id) &&
+                        !bannedMegaPokemonIds.has(normalizeMegaFormId(form.id))
                 );
 
                 // Find Aegislash's alternate form
@@ -298,7 +301,7 @@ async function loadTeam(player, container) {
                     megaButton.addEventListener("pointerenter", () => {
                         toggleForms.forEach(form => {
                             PokemonAPI.getPokemonForm(form).catch(() => {});
-                            PokemonAPI.preloadSprite(form.spriteId);
+                            PokemonAPI.preloadSprite(form.apiUrl || form.api);
                         });
                     });
 
@@ -837,6 +840,39 @@ function createDefensiveChart(team, megaControllers = []) {
             : "VIEW DEFENSIVE TYPE CHART";
 
     };
+}
+
+function normalizeMegaFormId(identifier) {
+    return identifier
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/-megax$/, "-mega-x")
+        .replace(/-megay$/, "-mega-y")
+        .replace(/-megaz$/, "-mega-z");
+}
+
+async function getBannedMegaPokemonIds() {
+
+    try {
+
+        const response = await fetch("data/rules.json");
+
+        if (!response.ok) {
+            throw new Error(`Could not load rules.json: ${response.status}`);
+        }
+
+        const rules = await response.json();
+
+        return new Set(
+            (rules["mega-pokemon"] || []).map(normalizeMegaFormId)
+        );
+
+    } catch (error) {
+
+        console.warn("Could not load the banned Mega Pokémon list.", error);
+        return new Set();
+    }
 }
 
 
