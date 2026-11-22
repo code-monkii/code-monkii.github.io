@@ -1,0 +1,695 @@
+/* =========================
+   FEATURE CARDS
+========================= */
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin: 40px 0;
+}
+
+.feature-card {
+    min-height: 160px;
+
+    border: 3px solid var(--color-border);
+
+    padding: 22px;
+
+    color: var(--color-border);
+    text-decoration: none;
+
+    box-shadow: 5px 5px 0 var(--color-border);
+
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+.feature-card:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 var(--color-border);
+}
+
+.feature-card.pink {
+    background: var(--color-pink);
+}
+
+.feature-card.mint {
+    background: var(--color-mint);
+}
+
+.feature-card.blue {
+    background: var(--color-blue);
+}
+
+.feature-card.lavender {
+    background: var(--color-lavender);
+}
+
+.feature-icon {
+    font-size: 25px;
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.feature-card p {
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+
+/* =========================
+   PLAYERS SECTION
+========================= */
+
+.players-section {
+    margin-top: 50px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    border-bottom: 3px solid var(--color-border);
+
+    padding-bottom: 12px;
+
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    font-size: 32px;
+}
+
+.player-count {
+    background: var(--color-yellow);
+
+    border: 2px solid var(--color-border);
+
+    padding: 6px 12px;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   PLAYER GRID
+========================= */
+
+.players-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.player-card {
+    background: var(--color-surface-pink);
+
+    border: 3px solid var(--color-border);
+
+    min-height: 100px;
+
+    padding: 20px;
+
+    text-decoration: none;
+    text-align: center;
+    color: var(--color-border);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-shadow: 4px 4px 0 var(--color-lavender);
+
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+.player-sprite {
+    width: 80px;
+    height: 80px;
+
+    object-fit: contain;
+}
+
+.player-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 6px 8px 0 var(--color-blue);
+}
+
+.player-number {
+    font-size: 11px;
+    font-weight: bold;
+    opacity: 0.6;
+}
+
+.player-name {
+    font-size: 21px;
+    font-weight: bold;
+
+    margin-top: 12px;
+}
+
+.player-placeholder {
+    font-size: 11px;
+    opacity: 0.55;
+
+    margin-top: 5px;
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+    grid-column: 1 / -1;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border: 2px dashed var(--color-lavender);
+}
+
+
+/* =========================
+   SEASON STATUS
+========================= */
+
+.season-status {
+    background: var(--color-surface);
+
+    border: 3px solid var(--color-border);
+
+    min-height: 105px;
+
+    display: grid;
+    grid-template-columns:
+        1fr
+        auto
+        1fr
+        auto
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    margin-top: 25px;
+
+    box-shadow: 5px 5px 0 var(--color-mint);
+}
+
+.status-item {
+    padding: 20px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.status-label {
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    opacity: 0.6;
+}
+
+.status-value {
+    font-size: 23px;
+
+    font-weight: bold;
+}
+
+.status-live {
+    color: var(--color-mint);
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+}
+
+.status-divider {
+    height: 55px;
+
+    width: 2px;
+
+    background: var(--color-lavender);
+}
+
+
+/* =========================
+   FEATURE CARD ARROW
+========================= */
+
+.card-arrow {
+    display: block;
+
+    margin-top: 15px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    transition: transform 0.15s;
+}
+
+.feature-card:hover .card-arrow {
+    transform: translateX(6px);
+}
+
+
+/* =========================
+   BAN LIST
+========================= */
+
+.banlist-section {
+    margin-top: 50px;
+}
+
+.banlist-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 25px;
+    padding: 10px 0 20px;
+}
+
+.banlist-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.banlist-entry span {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.banlist-description-entry {
+    justify-content: flex-start;
+    min-height: 150px;
+    cursor: pointer;
+}
+
+.banlist-description-entry:hover,
+.banlist-description-entry.active {
+    box-shadow: 5px 7px 0 var(--color-pink);
+}
+
+.banlist-description {
+    max-width: 260px;
+    margin: 0;
+
+    color: var(--color-text-muted);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.banlist-placeholder {
+    width: 96px;
+    height: 96px;
+    background: var(--color-surface);
+    border: 2px dashed var(--color-lavender);
+}
+
+/* Mobile */
+
+@media (max-width: 900px) {
+    .banlist-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .banlist-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px 10px;
+    }
+
+    .banlist-placeholder {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+
+
+/* =========================
+   RULES PAGE
+========================= */
+
+.rules-section,
+.banlist-section {
+    margin-top: 45px;
+}
+
+/* =========================
+   CLAUSE CARDS
+========================= */
+
+.clauses-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.clause-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: center;
+    gap: 25px;
+
+    width: 100%;
+    background: var(--color-surface-pink);
+    border: 3px solid var(--color-border);
+    padding: 20px;
+    box-shadow: 4px 4px 0 var(--color-lavender);
+}
+
+.clause-card h3 {
+    font-size: 18px;
+    color: var(--color-text);
+    text-align: center;
+}
+
+.clause-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+/* =========================
+   BANLIST GRIDS
+========================= */
+
+.banlist-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+/* =========================
+   BANLIST CARDS
+========================= */
+
+.banlist-entry {
+    min-height: 110px;
+    background: var(--color-surface-pink);
+    border: 3px solid var(--color-border);
+    box-shadow: 4px 4px 0 var(--color-lavender);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+    padding: 12px;
+    text-align: center;
+
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+.banlist-entry:hover {
+    transform: translateY(-3px);
+    box-shadow: 5px 7px 0 var(--color-blue);
+}
+
+.banlist-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.banlist-icon {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.banlist-entry span {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+
+/* =========================
+   SCHEDULE PAGE
+========================= */
+
+.schedule {
+    margin-bottom: 50px;
+}
+
+#schedule-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* =========================
+   TRAINER SCHEDULE CARDS
+========================= */
+
+/* =========================
+   SCHEDULE TRAINER GRID
+========================= */
+
+#schedule-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    align-items: start;
+}
+
+/* Collapsed trainer cards */
+
+.schedule-card {
+    width: 100%;
+    min-width: 0;
+    cursor: pointer;
+}
+
+/* Expanded trainer card */
+
+.schedule-card.expanded {
+    grid-column: 1 / -1;
+    cursor: default;
+}
+
+/* Trainer card header */
+
+.schedule-card-header {
+    width: 100%;
+    min-height: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px;
+
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.schedule-card-header:hover {
+    background: var(--color-surface);
+}
+
+.schedule-card-header .player-name {
+    margin-top: 12px;
+}
+
+.schedule-arrow {
+    font-size: 20px;
+    color: var(--color-pink-light);
+    margin-top: 8px;
+}
+
+/* Expanded schedule content */
+
+.schedule-card-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+
+    padding: 15px;
+    border-top: 2px solid var(--color-border);
+}
+
+.schedule-card-content[hidden] {
+    display: none;
+}
+
+
+/* =========================
+   EXPANDED SCHEDULE
+========================= */
+
+
+/* =========================
+   EXPANDED SCHEDULE
+========================= */
+
+.schedule-card-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    padding: 15px;
+    border-top: 2px solid var(--color-border);
+}
+
+.schedule-card-content[hidden] {
+    display: none;
+}
+
+/* Individual week cards */
+
+.schedule-matchup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 12px;
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    box-shadow: 3px 3px 0 var(--color-lavender);
+}
+
+.schedule-week-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.schedule-week-info strong {
+    font-size: 14px;
+    color: var(--color-pink-light);
+}
+
+.schedule-week-info span {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+}
+
+.schedule-opponent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.schedule-opponent img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.schedule-opponent span:last-child {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.schedule-vs {
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--color-pink-light);
+}
+
+.schedule-opponent {
+    text-decoration: none;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.schedule-opponent:hover {
+    color: var(--color-pink-light);
+}
+
+.schedule-matchup {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.schedule-week-info {
+    grid-column: 1;
+}
+
+.schedule-opponent {
+    grid-column: 3;
+    justify-self: end;
+}
+
+.schedule-vs {
+    grid-column: 2;
+    justify-self: center;
+    text-align: center;
+}
+
+
+/* =========================
+   RESPONSIVE RULES
+========================= */
+
+@media (max-width: 900px) {
+    .banlist-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .banlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .clauses-grid {
+        grid-template-columns: 1fr;
+    }
+}
