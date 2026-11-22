@@ -47,7 +47,13 @@ async function loadTrainers() {
 
         container.innerHTML = "";
 
-        data.players.forEach(player => {
+        const sortedPlayers = [...data.players].sort((a, b) =>
+            a.name.localeCompare(b.name, undefined, {
+                sensitivity: "base"
+            })
+        );
+
+        sortedPlayers.forEach(player => {
             const link = document.createElement("a");
 
             link.href = `player.html?id=${encodeURIComponent(player.id)}`;

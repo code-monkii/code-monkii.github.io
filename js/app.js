@@ -17,8 +17,15 @@ async function loadPlayers() {
         // Clear the loading message
         container.innerHTML = "";
 
+        // Sort players alphabetically by display name
+        const sortedPlayers = [...data.players].sort((a, b) =>
+            a.name.localeCompare(b.name, undefined, {
+                sensitivity: "base"
+            })
+        );
+
         // Create a card for each player
-        data.players.forEach((player) => {
+        sortedPlayers.forEach((player) => {
 
             const card = document.createElement("a");
 

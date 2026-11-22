@@ -1,4 +1,3 @@
-
 /* =========================
    LOAD SCHEDULE
 ========================= */
@@ -42,7 +41,13 @@ async function loadSchedule() {
 function renderSchedule(players, weeks, container) {
     container.innerHTML = "";
 
-    players.forEach(player => {
+    const sortedPlayers = [...players].sort((a, b) =>
+        a.name.localeCompare(b.name, undefined, {
+            sensitivity: "base"
+        })
+    );
+
+    sortedPlayers.forEach(player => {
         const card = document.createElement("article");
         card.className = "player-card schedule-card";
 
