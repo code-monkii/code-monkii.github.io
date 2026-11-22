@@ -62,19 +62,116 @@
     /* Header */
 
     .site-header {
-        flex-direction: column;
-
+        position: relative;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
         gap: 15px;
-
-        padding: 15px;
+        padding: 12px 15px;
     }
 
-    .nav {
-        flex-wrap: wrap;
+    .logo {
+        flex: 1;
+    }
 
+    .logo h1 {
+        font-size: 20px;
+    }
+
+    .logo span {
+        font-size: 10px;
+        padding: 4px 7px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        width: 44px;
+        height: 44px;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
+        gap: 5px;
+        flex-shrink: 0;
+        background: var(--color-surface);
+        border: 2px solid var(--color-border);
+        box-shadow: 3px 3px 0 var(--color-border);
+        cursor: pointer;
+    }
 
-        gap: 12px;
+    .menu-toggle span {
+        width: 22px;
+        height: 3px;
+        background: var(--color-border);
+        transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    #main-navigation {
+        display: none;
+        position: absolute;
+        top: calc(100% - 4px);
+        left: 15px;
+        right: 15px;
+        z-index: 500;
+        width: auto;
+        padding: 10px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        background: var(--color-lavender);
+        border: 3px solid var(--color-border);
+        box-shadow: 5px 5px 0 var(--color-border);
+    }
+
+    #main-navigation.is-open {
+        display: flex;
+    }
+
+    #main-navigation a,
+    .nav-dropdown-label {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 11px 12px;
+        text-align: left;
+    }
+
+    .nav-dropdown {
+        width: 100%;
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+        display: none;
+    }
+
+    .nav-dropdown.open .dropdown-menu,
+    .nav-dropdown.open:hover .dropdown-menu {
+        display: flex;
+    }
+
+    .dropdown-menu {
+        position: static;
+        max-height: 220px;
+        min-width: 0;
+        width: 100%;
+        margin: 4px 0 6px;
+        box-shadow: none;
+        border-width: 2px;
+    }
+
+    .dropdown-menu a {
+        width: 100%;
+        box-sizing: border-box;
     }
 
     /* Hero */

@@ -18,12 +18,12 @@ async function loadPartial(elementId, filePath) {
 
         if (elementId === "site-header") {
             updateActiveNav();
+            initializeMobileNavigation();
 }
 
     } catch (error) {
         console.error(error);
     }
-    
 }
 
 
@@ -71,28 +71,91 @@ async function loadTrainers() {
 function updateActiveNav() {
     const currentPage = window.location.pathname.split("/").pop();
 
-    // Remove existing active states
     document.querySelectorAll("nav a, nav .nav-dropdown-label").forEach(element => {
         element.classList.remove("active");
     });
 
-    // Home page
     if (currentPage === "" || currentPage === "index.html") {
         document.querySelector('nav a[href="index.html"]')
             ?.classList.add("active");
-    }
-
-    // Rules page
-    else if (currentPage === "rules.html") {
-        document.querySelector('nav a[href="rules.html"]')
+    } else if (currentPage === "schedule.html") {
+        document.querySelector('nav a[href="schedule.html"]')
+            ?.classList.add("active");
+    } else if (currentPage === "rules.html" || currentPage === "status.html") {
+        document.querySelector('[aria-controls="guide-dropdown"]')
+            ?.classList.add("active");
+    } else if (currentPage === "player.html") {
+        document.querySelector('[aria-controls="trainer-dropdown"]')
             ?.classList.add("active");
     }
+}
 
-    // Trainer pages
-    else if (currentPage === "player.html") {
-        document.querySelector(".nav-dropdown-label")
-            ?.classList.add("active");
-    }
+
+function initializeMobileNavigation() {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.getElementById("main-navigation");
+
+    if (!menuToggle || !navigation || menuToggle.dataset.initialized === "true") return;
+
+    const dropdowns = [...navigation.querySelectorAll(".nav-dropdown")];
+
+    menuToggle.dataset.initialized = "true";
+
+    const closeMenu = () => {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        navigation.classList.remove("is-open");
+
+        dropdowns.forEach(dropdown => {
+            dropdown.classList.remove("open");
+            dropdown.querySelector(".nav-dropdown-label")
+                ?.setAttribute("aria-expanded", "false");
+        });
+    };
+
+    menuToggle.addEventListener("click", () => {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+        navigation.classList.toggle("is-open", !isOpen);
+
+        if (isOpen) {
+            dropdowns.forEach(dropdown => dropdown.classList.remove("open"));
+        }
+    });
+
+    dropdowns.forEach(dropdown => {
+        const dropdownToggle = dropdown.querySelector(".nav-dropdown-label");
+
+        dropdownToggle?.addEventListener("click", event => {
+            if (!window.matchMedia("(max-width: 600px)").matches) return;
+
+            event.preventDefault();
+
+            dropdowns.forEach(otherDropdown => {
+                if (otherDropdown !== dropdown) {
+                    otherDropdown.classList.remove("open");
+                    otherDropdown.querySelector(".nav-dropdown-label")
+                        ?.setAttribute("aria-expanded", "false");
+                }
+            });
+
+            const isOpen = dropdown.classList.toggle("open");
+            dropdownToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+    });
+
+    navigation.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") closeMenu();
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 600) closeMenu();
+    });
 }
 
 
@@ -105,4 +168,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadPartial("site-footer", "partials/footer.html");
 
     await loadTrainers();
+
 });

@@ -83,6 +83,10 @@ nav a.active {
     border: 2px solid var(--color-border);
 }
 
+.menu-toggle {
+    display: none;
+}
+
 
 /* =========================
    MAIN
@@ -372,10 +376,12 @@ footer {
 .nav-dropdown-label {
     display: block;
     color: var(--color-border);
+    font-family: inherit;
+    background: transparent;
+    border: 2px solid transparent;
     font-weight: bold;
     font-size: 14px;
     padding: 9px 13px;
-    border: 2px solid transparent;
     cursor: pointer;
 
     transition:
