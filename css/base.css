@@ -45,6 +45,26 @@
     --type-dragon: #655b9b;
     --type-dark: #675c58;
 
+    /* Pokémon type text colours */
+    --type-electric-light: #f4d35e;
+    --type-fire-light:     #d18b7b;
+    --type-water-light:    #79b4c5;
+    --type-grass-light:    #9cd1ae;
+    --type-fairy-light:    #f0acc4;
+    --type-psychic-light:  #e6b0d5;
+    --type-flying-light:   #a09bd0;
+    --type-normal-light:   #a39c8d;
+    --type-fighting-light: #ca8989;
+    --type-poison-light:   #b48bea;
+    --type-ground-light:   #c5a574;
+    --type-rock-light:     #aaa078;
+    --type-bug-light:      #a6b477;
+    --type-ghost-light:    #a09ac6;
+    --type-steel-light:    #9baab8;
+    --type-ice-light:      #8ed5e8;
+    --type-dragon-light:   #a19ad5;
+    --type-dark-light:     #a49a95;
+
     /* Defensive chart colours */
     --effectiveness-weak: #a94468;
     --effectiveness-resist: #4f8b62;

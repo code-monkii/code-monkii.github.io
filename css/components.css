@@ -675,6 +675,98 @@
 
 
 /* =========================
+   STATUS EFFECT GUIDE
+========================= */
+
+.status-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.status-guide-card {
+    min-height: 180px;
+    padding: 18px;
+    background: var(--color-surface-pink);
+    border: 3px solid var(--color-border);
+    box-shadow: 4px 4px 0 var(--color-lavender);
+}
+
+.status-guide-card h3 {
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-lavender);
+    color: var(--color-text);
+    font-size: 20px;
+}
+
+.status-guide-card ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.status-guide-card li {
+    margin-bottom: 7px;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.status-burn h3 { color: #f68b48; }
+.status-paralysis h3 { color: #f4d35e; }
+.status-poison h3 { color: #b48bea; }
+.status-toxic h3 { color: #9c6ade; }
+.status-sleep h3 { color: #9fa9d8; }
+.status-freeze h3 { color: #8ed5e8; }
+.status-confusion h3 { color: #d9a0c8; }
+.status-flinch h3 { color: #d6c493; }
+.status-infatuation h3 { color: #e6a0b8; }
+.status-trapped h3 { color: #91b59a; }
+.status-taunted h3 { color:var(--type-dark-light); }
+.status-leeched h3 { color: var(--type-grass-light); }
+.status-salted h3 { color: var(--type-ground-light); }
+.status-grassy h3 { color: var(--type-grass-light); }
+.status-electric h3 { color: var(--type-electric-light); }
+.status-misty h3 { color: var(--type-fairy-light); }
+.status-psychic h3 { color: var(--type-psychic-light); }
+.status-trick-room h3 { color: var(--type-dark-light); }
+.status-tailwind h3 { color: var(--type-flying-light); }
+.status-reflect h3 { color: var(--type-psychic-light); }
+.status-light-screen h3 { color: var(--type-psychic-light); }
+.status-stealth-rock h3 { color: var(--type-rock-light); }
+.status-aurora-veil h3 { color: var(--type-ice-light); }
+.status-toxic-spikes h3 { color: var(--type-poison-light); }
+
+.status-note {
+    padding: 15px;
+    background: var(--color-surface);
+    border: 2px solid var(--color-lavender);
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.status-note strong {
+    color: var(--color-text);
+}
+
+@media (max-width: 900px) {
+    .status-guide-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .status-guide-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .status-guide-card {
+        min-height: 0;
+    }
+}
+
+/* =========================
    RESPONSIVE RULES
 ========================= */
 
