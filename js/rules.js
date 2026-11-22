@@ -91,7 +91,7 @@ function renderItemList(items, containerId) {
 
     items.forEach(item => {
         const card = document.createElement("div");
-        card.className = "banlist-entry";
+        card.className = "banlist-entry banlist-description-entry";
 
         const sprite = document.createElement("img");
         sprite.className = "banlist-sprite";
@@ -102,10 +102,20 @@ function renderItemList(items, containerId) {
         const name = document.createElement("span");
         name.textContent = item.name;
 
+        const description = document.createElement("p");
+        description.className = "banlist-description";
+        description.textContent = "Loading description...";
+        description.hidden = true;
+
         card.appendChild(sprite);
         card.appendChild(name);
-
+        card.appendChild(description);
+        setupBanlistDescriptionToggle(card, description);
         container.appendChild(card);
+
+        fetchApiDescription("item", item.id).then(text => {
+            description.textContent = text;
+        });
     });
 }
 
@@ -122,16 +132,43 @@ function renderList(entries, containerId) {
 
     container.innerHTML = "";
 
+    const isAbilityList = containerId.includes("abilities");
+
     entries.forEach(entry => {
         const card = document.createElement("div");
-        card.className = "banlist-entry";
+        card.className = "banlist-entry banlist-description-entry";
 
         const name = document.createElement("span");
         name.textContent = entry.name;
 
-        card.appendChild(name);
+        const description = document.createElement("p");
+        description.className = "banlist-description";
+        description.textContent = "Loading description...";
+        description.hidden = true;
 
+        card.appendChild(name);
+        card.appendChild(description);
         container.appendChild(card);
+
+        if (isAbilityList && typeof PokemonAPI !== "undefined") {
+
+            PokemonAPI.getAbility(normalizeRulesApiId(entry.id))
+                .then(ability => {
+                    description.textContent =
+                        ability.effect || "Description unavailable.";
+                })
+                .catch(() => {
+                    description.textContent = "Description unavailable.";
+                });
+
+        } else {
+
+            fetchApiDescription("move", entry.id).then(text => {
+                description.textContent = text;
+            });
+        }
+
+        setupBanlistDescriptionToggle(card, description);
     });
 }
 
@@ -223,3 +260,111 @@ document.addEventListener(
     "DOMContentLoaded",
     loadRules
 );
+
+/* =========================
+   API DESCRIPTION FETCHING
+========================= */
+
+const RULES_API_BASE = "https://pokeapi.co/api/v2/";
+
+function normalizeRulesApiId(id) {
+    const normalizedIds = {
+        brightpowder: "bright-powder",
+        sandveil: "sand-veil",
+        snowcloak: "snow-cloak",
+        doubleteam: "double-team",
+        sleeppowder: "sleep-powder",
+        kingsrock: "kings-rock"
+    };
+
+    const normalized = id
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, "-");
+
+    return normalizedIds[normalized] || normalized;
+}
+
+async function fetchApiDescription(endpoint, id) {
+
+    try {
+
+        const response = await fetch(
+            `${RULES_API_BASE}${endpoint}/${encodeURIComponent(normalizeRulesApiId(id))}`
+        );
+
+        if (!response.ok) {
+            return "Description unavailable.";
+        }
+
+        const data = await response.json();
+
+        if (endpoint === "item") {
+
+            const englishEntry = data.effect_entries?.find(
+                entry => entry.language.name === "en"
+            );
+
+            return englishEntry?.effect
+                ?.replace(/\s+/g, " ")
+                .trim() || "Description unavailable.";
+        }
+
+        const englishEntry = data.effect_entries?.find(
+            entry => entry.language.name === "en"
+        );
+
+        return englishEntry?.effect
+            ?.replace(/\s+/g, " ")
+            .trim() || "Description unavailable.";
+
+    } catch (error) {
+
+        console.warn(`Could not load ${endpoint} description for ${id}:`, error);
+        return "Description unavailable.";
+    }
+}
+
+/* =========================
+   TOGGLE DESCRIPTION
+========================= */
+
+function setupBanlistDescriptionToggle(card, description) {
+    card.classList.add("banlist-description-entry");
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-expanded", "false");
+    description.hidden = true;
+
+    const toggleDescription = () => {
+
+        const isOpen = !description.hidden;
+
+        card.closest(".banlist-grid")
+            ?.querySelectorAll(".banlist-description")
+            .forEach(otherDescription => {
+
+                if (otherDescription !== description) {
+                    otherDescription.hidden = true;
+
+                    const otherCard = otherDescription.closest(".banlist-entry");
+                    otherCard?.classList.remove("active");
+                    otherCard?.setAttribute("aria-expanded", "false");
+                }
+            });
+
+        description.hidden = isOpen;
+        card.classList.toggle("active", !isOpen);
+        card.setAttribute("aria-expanded", String(!isOpen));
+    };
+
+    card.addEventListener("click", toggleDescription);
+
+    card.addEventListener("keydown", event => {
+
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleDescription();
+        }
+    });
+}
