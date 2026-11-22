@@ -156,6 +156,13 @@ function renderSchedule(players, weeks, container) {
                 card.classList.add("expanded");
 
                 container.prepend(card);
+
+                requestAnimationFrame(() => {
+                    card.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                });
             }
         });
 

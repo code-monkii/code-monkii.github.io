@@ -307,6 +307,15 @@ async function loadTeam(player, container) {
 
                     megaButton.addEventListener("click", async event => {
                         event.stopPropagation();
+
+                        const chartWrapper = document.querySelector(
+                            "#defensive-chart-container .type-chart-wrapper"
+                        );
+
+                        if (chartWrapper) {
+                            defensiveChartScrollLeft = chartWrapper.scrollLeft;
+                        }
+
                         await megaController.toggle();
                     });
 
@@ -349,6 +358,13 @@ async function loadTeam(player, container) {
                         } else {
                             container.prepend(slot);
                         }
+
+                        requestAnimationFrame(() => {
+                            slot.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+                        });
                     }
                 });
 
@@ -649,6 +665,28 @@ function createDefensiveChart(team, megaControllers = []) {
         return;
     }
 
+    const existingWrapper = container.querySelector(".type-chart-wrapper");
+
+    if (existingWrapper) {
+        if (!existingWrapper.dataset.scrollTrackingAttached) {
+            existingWrapper.dataset.scrollTrackingAttached = "true";
+
+            existingWrapper.addEventListener("scroll", () => {
+                if (existingWrapper.dataset.restoring !== "true") {
+                    defensiveChartScrollLeft = existingWrapper.scrollLeft;
+                }
+            }, { passive: true });
+        }
+
+        if (existingWrapper.scrollLeft > 0) {
+            defensiveChartScrollLeft = existingWrapper.scrollLeft;
+        }
+    }
+
+    const previousScrollLeft = defensiveChartScrollLeft;
+    const previousWindowScrollX = window.scrollX;
+    const previousWindowScrollY = window.scrollY;
+
     const previousChartSprites = Array.from(
         container.querySelectorAll(".type-chart-pokemon-heading img"),
         image => image.src
@@ -739,6 +777,11 @@ function createDefensiveChart(team, megaControllers = []) {
 
                 event.stopPropagation();
 
+                const chartWrapper = megaButton.closest(".type-chart-wrapper");
+                if (chartWrapper) {
+                    defensiveChartScrollLeft = chartWrapper.scrollLeft;
+                }
+
                 megaButton.disabled = true;
 
                 try {
@@ -819,14 +862,36 @@ function createDefensiveChart(team, megaControllers = []) {
     table.appendChild(tbody);
 
     // Add table to a scrollable wrapper
-    const wrapper = document.createElement("div");
+    const wrapper = existingWrapper || document.createElement("div");
 
     wrapper.className = "type-chart-wrapper";
-    wrapper.appendChild(table);
+    wrapper.replaceChildren(table);
 
-    container.innerHTML = "";
+    if (!existingWrapper) {
+        container.replaceChildren(wrapper);
+    }
 
-    container.appendChild(wrapper);
+    wrapper.dataset.restoring = "true";
+
+    const restoreChartPosition = () => {
+        wrapper.scrollLeft = previousScrollLeft;
+        defensiveChartScrollLeft = previousScrollLeft;
+    };
+
+    restoreChartPosition();
+
+    requestAnimationFrame(() => {
+        restoreChartPosition();
+
+        requestAnimationFrame(() => {
+            restoreChartPosition();
+
+            window.setTimeout(() => {
+                restoreChartPosition();
+                delete wrapper.dataset.restoring;
+            }, 100);
+        });
+    });
 
     // Toggle chart visibility
     toggleButton.onclick = () => {
@@ -874,6 +939,8 @@ async function getBannedMegaPokemonIds() {
         return new Set();
     }
 }
+
+let defensiveChartScrollLeft = 0;
 
 
 document.addEventListener("DOMContentLoaded", loadPlayer);

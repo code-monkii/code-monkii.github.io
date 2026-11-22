@@ -52,6 +52,7 @@
 .type-chart-wrapper {
     width: 100%;
     overflow-x: auto;
+    overflow-anchor: none;
 }
 
 .type-chart-table {
@@ -188,4 +189,33 @@
 .type-chart-mega-toggle:disabled {
     opacity: 0.5;
     cursor: wait;
+}
+
+/* Mobile styles for defensive chart */
+@media (max-width: 600px) {
+    .type-chart-wrapper {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        overscroll-behavior-x: contain;
+    }
+
+    .type-chart-table {
+        min-width: 720px;
+    }
+
+    .type-chart-table thead th:first-child,
+    .type-chart-table tbody th {
+        position: sticky;
+        left: 0;
+        z-index: 3;
+    }
+
+    .type-chart-table thead th:first-child {
+        z-index: 4;
+    }
+
+    .type-chart-table tbody th {
+        background: var(--color-lavender);
+    }
 }
